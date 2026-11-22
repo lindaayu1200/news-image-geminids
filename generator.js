@@ -1,6 +1,9 @@
 'use strict';
 // THE NIGHT SKY HERALD - deterministic 1200x675 broadsheet front page.
 // Every visual choice that could be random is driven by the single PRNG below.
+// Layout regions: masthead; hero sky panel with seeded stars and meteors;
+// HOW TO WATCH box; WORLD WIRE column; footer strip.
+// PRNG: the mulberry32 generator uses the fixed seed 0x20261121 declared below.
 const fs = require('fs');
 const path = require('path');
 const { createCanvas } = require('canvas');
