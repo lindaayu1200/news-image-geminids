@@ -267,54 +267,56 @@ rule(cx, 399, cx + cw, 'rgba(226,232,255,0.45)');
 const briefs = [
   {
     title: 'COP31 RUNS INTO SATURDAY',
-    body: 'Antalya talks stall as African bloc rejects a draft with no fossil-fuel language.',
+    body: 'African bloc rejects a fossil-fuel-free draft.',
   },
   {
     title: 'IRAN STRIKE CALL DEFERRED',
-    body: 'US pushes any decision past the New Year; 14+ tankers crewed at Kharg Island.',
+    body: 'Decision pushed past New Year; Kharg tankers mass.',
   },
   {
     title: 'UK AND EU SEAL SUMMIT DEALS',
-    body: 'Agri-food trade, linked carbon markets from 2028 and youth mobility concluded.',
+    body: 'Food, carbon and youth-mobility pacts concluded.',
   },
   {
     title: 'AI SELLOFF DEEPENS',
-    body: 'S&P 500 and Dow sit more than 10% below their record highs.',
+    body: 'S&P 500 and Dow over 10% below record highs.',
   },
   {
     title: 'HUMANS DECIDE MILITARY AI',
-    body: 'Trump-Xi pact keeps people in charge of military uses of AI, Washington says.',
+    body: 'Trump-Xi pact keeps people in charge.',
   },
   {
     title: 'DRAGON HEADING HOME',
-    body: 'Cargo craft undocks from the ISS; splashdown off California on Saturday.',
+    body: 'Cargo craft undocks; splashdown off California.',
   },
   {
     title: 'BANGLADESH UNREST FLARES',
-    body: 'Hasina, sentenced to death in absentia, vows to return in December.',
+    body: 'Hasina, sentenced in absentia, vows to return.',
   },
   {
     title: '41 KILLED IN YEMEN STRIKES',
-    body: 'Houthis claim hits on Saudi soil after weekend raids.',
+    body: 'Houthis claim hits on Saudi soil.',
   },
   {
     title: 'MISSILE HITS POLISH VILLAGE',
-    body: 'Russian X-101 falls near Lublin during attacks on Ukraine; NATO scrambles jets.',
+    body: 'Russian X-101 falls near Lublin; NATO jets up.',
   },
   {
     title: 'ISS KEEPS SCIENCE WATCH',
-    body: "Expedition 75's seven press on with research after Dragon's departure.",
+    body: "Expedition 75's seven press on with research.",
   },
 ];
 briefs.forEach((brief, i) => {
-  const y = 422 + i * 21;
+  const col = i % 2;
+  const row = Math.floor(i / 2);
+  const x = cx + 13 + col * 296;
+  const y = 424 + row * 30;
   ctx.fillStyle = GOLD;
   ctx.beginPath();
-  ctx.arc(cx + 4, y - 3.5, 2.1, 0, TAU);
+  ctx.arc(x - 9, y - 3.5, 2.1, 0, TAU);
   ctx.fill();
-  text(brief.title, cx + 13, y, `bold 12px ${SERIF}`, PAPER);
-  text('21 NOV', cx + cw, y, `9px ${SANS}`, GOLD, 'right');
-  text(brief.body, cx + 13, y + 12, `10.5px ${SANS}`, 'rgba(226,232,255,0.78)');
+  text(brief.title, x, y, `bold 11.5px ${SERIF}`, PAPER);
+  text(brief.body, x, y + 11.5, `10px ${SANS}`, 'rgba(226,232,255,0.78)');
 });
 
 // --- Footer ------------------------------------------------------------------
