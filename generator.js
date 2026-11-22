@@ -106,7 +106,7 @@ text('SKY DESK / NO. 21', 690, 247, `11px ${SANS}`, 'rgba(226,232,255,0.6)', 'ri
 // --- Hero sky panel ----------------------------------------------------------
 const px = 40;
 const py = 266;
-const pw = 650;
+const pw = 520;
 const ph = 236;
 ctx.save();
 ctx.beginPath();
@@ -231,62 +231,90 @@ text('ILLUSTRATION / SKY DESK', px + pw - 10, py + ph - 12, `10px ${SANS}`, 'rgb
 // --- Deck --------------------------------------------------------------------
 paragraph(
   'Sky watchers get a moonless window after midnight; up to 120 meteors per hour expected',
-  40, 528, 650, `bold 18px ${SERIF}`, PAPER, 24
+  40, 528, 500, `bold 16px ${SERIF}`, PAPER, 21
 );
-rule(40, 588, 690, 'rgba(226,232,255,0.25)');
+rule(40, 590, 560, 'rgba(226,232,255,0.25)');
 text('THE SHOWER PEAKS ANNUALLY IN MID-DECEMBER; THIS YEAR THE MOON IS NEW ON DEC. 9.',
-  40, 608, `11px ${SANS}`, 'rgba(226,232,255,0.55)');
+  40, 610, `10px ${SANS}`, 'rgba(226,232,255,0.55)');
 
-// --- Right column: how to watch ---------------------------------------------
-const cx = 712;
-const cw = 448;
+// --- Right column: how to watch (compact) ------------------------------------
+const cx = 580;
+const cw = 580;
 const boxTop = 266;
-const boxHeight = 154;
+const boxHeight = 96;
 ctx.fillStyle = 'rgba(6,11,28,0.75)';
 ctx.fillRect(cx, boxTop, cw, boxHeight);
 ctx.strokeStyle = GOLD;
 ctx.lineWidth = 1;
 ctx.strokeRect(cx + 0.5, boxTop + 0.5, cw - 1, boxHeight - 1);
-text('HOW TO WATCH', cx + 16, boxTop + 28, `bold 20px ${SERIF}`, GOLD);
-rule(cx + 16, boxTop + 38, cx + cw - 16, 'rgba(217,184,117,0.45)');
+text('HOW TO WATCH', cx + 14, boxTop + 22, `bold 15px ${SERIF}`, GOLD);
+rule(cx + 14, boxTop + 30, cx + cw - 14, 'rgba(217,184,117,0.45)');
 const guide = [
   ['RADIANT', 'Gemini — trace each trail back to the twin stars'],
   ['BEST TIME', 'After local midnight, when the sky is darkest'],
   ['LOOK', 'Away from city light; allow 20 minutes to adapt'],
 ];
 guide.forEach(([label, value], i) => {
-  const y = boxTop + 62 + i * 30;
-  text(label, cx + 16, y, `bold 10px ${SANS}`, GOLD);
-  text(value, cx + 102, y, `13px ${SANS}`, PAPER);
+  const y = boxTop + 48 + i * 16;
+  text(label, cx + 14, y, `bold 9px ${SANS}`, GOLD);
+  text(value, cx + 90, y, `11.5px ${SANS}`, PAPER);
 });
 
 // --- Right column: world wire briefs ----------------------------------------
-text('WORLD WIRE', cx, 450, `bold 17px ${SERIF}`, PAPER);
-text('21 NOVEMBER 2026', cx + cw, 450, `10px ${SANS}`, GOLD, 'right');
-rule(cx, 458, cx + cw, 'rgba(226,232,255,0.45)');
+text('WORLD WIRE', cx, 392, `bold 15px ${SERIF}`, PAPER);
+text('21 NOVEMBER 2026', cx + cw, 392, `10px ${SANS}`, GOLD, 'right');
+rule(cx, 399, cx + cw, 'rgba(226,232,255,0.45)');
 const briefs = [
   {
-    title: 'COP31 TALKS RUN INTO SATURDAY',
-    body: 'Antalya negotiators seek a revised deal after fossil-fuel language vanished from the draft text.',
+    title: 'COP31 RUNS INTO SATURDAY',
+    body: 'Antalya talks stall as African bloc rejects a draft with no fossil-fuel language.',
   },
   {
-    title: 'TECH SHARES SEEN STEADYING',
-    body: 'Traders eye Monday after a 5.3% Nasdaq slide; the S&P 500 and Dow both sit in correction.',
+    title: 'IRAN STRIKE CALL DEFERRED',
+    body: 'US pushes any decision past the New Year; 14+ tankers crewed at Kharg Island.',
   },
   {
-    title: 'ISS CREW KEEPS SCIENCE WATCH',
-    body: "Expedition 75's seven aboard press on with research after Cargo Dragon's departure.",
+    title: 'UK AND EU SEAL SUMMIT DEALS',
+    body: 'Agri-food trade, linked carbon markets from 2028 and youth mobility concluded.',
+  },
+  {
+    title: 'AI SELLOFF DEEPENS',
+    body: 'S&P 500 and Dow sit more than 10% below their record highs.',
+  },
+  {
+    title: 'HUMANS DECIDE MILITARY AI',
+    body: 'Trump-Xi pact keeps people in charge of military uses of AI, Washington says.',
+  },
+  {
+    title: 'DRAGON HEADING HOME',
+    body: 'Cargo craft undocks from the ISS; splashdown off California on Saturday.',
+  },
+  {
+    title: 'BANGLADESH UNREST FLARES',
+    body: 'Hasina, sentenced to death in absentia, vows to return in December.',
+  },
+  {
+    title: '41 KILLED IN YEMEN STRIKES',
+    body: 'Houthis claim hits on Saudi soil after weekend raids.',
+  },
+  {
+    title: 'MISSILE HITS POLISH VILLAGE',
+    body: 'Russian X-101 falls near Lublin during attacks on Ukraine; NATO scrambles jets.',
+  },
+  {
+    title: 'ISS KEEPS SCIENCE WATCH',
+    body: "Expedition 75's seven press on with research after Dragon's departure.",
   },
 ];
 briefs.forEach((brief, i) => {
-  const y = 482 + i * 53;
+  const y = 422 + i * 21;
   ctx.fillStyle = GOLD;
   ctx.beginPath();
-  ctx.arc(cx + 4, y - 4, 2.4, 0, TAU);
+  ctx.arc(cx + 4, y - 3.5, 2.1, 0, TAU);
   ctx.fill();
-  text(brief.title, cx + 15, y, `bold 14px ${SERIF}`, PAPER);
-  text('21 NOV', cx + cw, y, `10px ${SANS}`, GOLD, 'right');
-  paragraph(brief.body, cx + 15, y + 16, cw - 22, `12.5px ${SANS}`, 'rgba(226,232,255,0.78)', 15);
+  text(brief.title, cx + 13, y, `bold 12px ${SERIF}`, PAPER);
+  text('21 NOV', cx + cw, y, `9px ${SANS}`, GOLD, 'right');
+  text(brief.body, cx + 13, y + 12, `10.5px ${SANS}`, 'rgba(226,232,255,0.78)');
 });
 
 // --- Footer ------------------------------------------------------------------
