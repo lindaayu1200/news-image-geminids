@@ -298,6 +298,20 @@ tracked(
   WIDTH / 2, 661, `bold 11px ${SANS}`, 'rgba(242,244,255,0.85)', 1.1
 );
 
+// --- Judge gate: compose the 1200x675 poster onto a 1024x1024 canvas ---------
+// The competition's gate requires the output to be within 1024x1024 pixels,
+// so the poster is scaled uniformly (1024x576) and centred on the same
+// deep-night gradient, with equal bands above and below it. Still fully
+// deterministic: no randomness is involved in the composition step.
+const composed = createCanvas(1024, 1024);
+const out = composed.getContext('2d');
+const banner = out.createLinearGradient(0, 0, 0, 1024);
+banner.addColorStop(0, '#0b1026');
+banner.addColorStop(1, '#18234d');
+out.fillStyle = banner;
+out.fillRect(0, 0, 1024, 1024);
+out.drawImage(canvas, 0, 224, 1024, 576); // uniform scale of the 16:9 poster
+
 const outputDir = path.join(__dirname, 'out');
 fs.mkdirSync(outputDir, { recursive: true });
-fs.writeFileSync(path.join(outputDir, 'news.png'), canvas.toBuffer('image/png'));
+fs.writeFileSync(path.join(outputDir, 'news.png'), composed.toBuffer('image/png'));
